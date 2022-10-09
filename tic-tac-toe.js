@@ -22,9 +22,15 @@ function addIDAndClickListenersToSquares() {
     }
 }
 
+// Keeps track of past moves to determine who plays next
 let moves = [];
 
 function addXO() {
+    // Prevents cheating
+    if (this.innerHTML == "X" || this.innerHTML == "O") {
+        return;
+    }
+    // Adds an X or an O depending on who's turn it is to play
     if (moves.length % 2 == 0) {
         this.className = "square X";
         this.innerHTML = "X";
@@ -116,6 +122,7 @@ function addNewGameButtonListener() {
 function restartGame() {
     resetSquares();
     resetStatusMessage();
+    moves = [] // Resets move history
 }
 
 function resetSquares() {
