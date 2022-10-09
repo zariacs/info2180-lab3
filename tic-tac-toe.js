@@ -13,8 +13,10 @@ function addSquareClassToSquares() {
 function addClickListenersToSquares() {
     const allSquares = document.getElementsByClassName("square");
     for (var square of allSquares) {
-        // square.onclick = addXO(square);
         square.addEventListener("click", addXO);
+        square.addEventListener("mouseover", changeForIncomingHover);
+        square.addEventListener("mouseout", changeForOutgoingHover);
+
     }
 }
 
@@ -30,6 +32,14 @@ function addXO() {
         this.innerHTML = "O";
         moves.push("o");
     }
+}
+
+function changeForIncomingHover() {
+    this.classList.add("hover");
+}
+
+function changeForOutgoingHover() {
+    this.classList.remove("hover");
 }
 
 
