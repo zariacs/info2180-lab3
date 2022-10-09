@@ -1,6 +1,7 @@
 window.onload = function () {
     addSquareClassToSquares();
-    addClickListenersToSquares();
+    addIDAndClickListenersToSquares();
+    addNewGameButtonListener();
 }
 
 function addSquareClassToSquares() {
@@ -10,8 +11,9 @@ function addSquareClassToSquares() {
     }
 }
 
-function addClickListenersToSquares() {
-    const allSquares = document.getElementsByClassName("square");
+const allSquares = document.getElementsByClassName("square");
+
+function addIDAndClickListenersToSquares() {
     for (var square = 0; square < allSquares.length; square++) {
         allSquares[square].id = square + 1;
         allSquares[square].addEventListener("click", addXO);
@@ -106,7 +108,25 @@ function checkDiagonal(whichSquare) {
     }
 }
 
+function addNewGameButtonListener() {
+    const button = document.getElementsByClassName("btn")[0];
+    button.addEventListener("click", restartGame);
+}
 
+function restartGame() {
+    resetSquares();
+    resetStatusMessage();
+}
 
+function resetSquares() {
+    for (square of allSquares) {
+        square.innerHTML = "";
+        square.className = "square";
+    }
+}
 
+function resetStatusMessage() {
+    document.getElementById("status").classList.remove("you-won");
+    document.getElementById("status").innerHTML = "Move your mouse over a square and click to play an X or an O.";
+}
 
