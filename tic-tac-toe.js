@@ -30,7 +30,7 @@ function addXO() {
     if (this.innerHTML == "X" || this.innerHTML == "O") {
         return;
     }
-    // Adds an X or an O depending on who's turn it is to play
+    // Adds an X or an O depending on whose turn it is to play
     if (moves.length % 2 == 0) {
         this.className = "square X";
         this.innerHTML = "X";
